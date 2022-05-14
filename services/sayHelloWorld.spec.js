@@ -7,6 +7,7 @@ describe('Say Hello tests', () => {
         expect(response).toBe('Hello World!');
     });
 
+    console.log(process.env.DAY_OF_WEEK)
     it('Should say Hello Germano', () => {
         const response = sayHelloWorld.sayHello('Germano');
 
