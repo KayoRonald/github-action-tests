@@ -25,3 +25,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn install --frozen-lockfile
     - run: yarn test
+    - name: 💬 Send Message to Slack 🚀
+      uses: archive/github-actions-slack@v2.4.0
