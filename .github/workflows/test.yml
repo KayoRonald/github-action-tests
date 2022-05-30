@@ -19,18 +19,11 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         
     steps:
-    - name: Create commit comment
-      uses: peter-evans/commit-comment@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
           node-version: ${{ matrix.node-version }}
-          body: |
-            This is a multi-line test comment
-            - With GitHub **Markdown**
-            - Created by [commit-comment][1]
-
-            [1]: https://github.com/peter-evans/commit-comment
+          
     - run: yarn install --frozen-lockfile
     - run: yarn test
     
