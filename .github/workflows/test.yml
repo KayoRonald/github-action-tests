@@ -19,15 +19,18 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/first-interaction@v1
+    - name: Create commit comment
+      uses: peter-evans/commit-comment@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        node-version: ${{ matrix.node-version }}
-        issue-message: '# Message with markdown.\nThis is the message that will be displayed on users'
-        pr-message: 'Message that will be displayed on users'
+          node-version: ${{ matrix.node-version }}
+          body: |
+            This is a multi-line test comment
+            - With GitHub **Markdown**
+            - Created by [commit-comment][1]
+
+            [1]: https://github.com/peter-evans/commit-comment
     - run: yarn install --frozen-lockfile
     - run: yarn test
     
